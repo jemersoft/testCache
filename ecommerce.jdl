@@ -4,7 +4,7 @@ entity Product {
     description String
     price BigDecimal required min(0)
     productSize Size required
-    image ImageBlob
+    image String
 }
 
 enum Size {
