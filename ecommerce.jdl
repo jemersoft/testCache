@@ -30,7 +30,6 @@ enum Gender {
 }
 
 entity ShoppingCart {
-    placedDate Instant required
     status OrderStatus required
     totalPrice BigDecimal required min(0)
     paymentMethod PaymentMethod required
