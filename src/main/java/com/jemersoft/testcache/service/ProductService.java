@@ -2,12 +2,14 @@ package com.jemersoft.testcache.service;
 
 import com.jemersoft.testcache.service.dto.ProductDTO;
 import java.util.Optional;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
  * Service Interface for managing {@link com.jemersoft.testcache.domain.Product}.
  */
+@Cacheable("product")
 public interface ProductService {
     /**
      * Save a product.

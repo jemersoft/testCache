@@ -14,6 +14,8 @@ import javax.validation.constraints.*;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class ProductDTO implements Serializable {
 
+    public ProductDTO() {}
+
     private Long id;
 
     @NotNull

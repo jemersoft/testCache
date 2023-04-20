@@ -2,12 +2,14 @@ package com.jemersoft.testcache.service;
 
 import com.jemersoft.testcache.service.dto.ShoppingCartDTO;
 import java.util.Optional;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
  * Service Interface for managing {@link com.jemersoft.testcache.domain.ShoppingCart}.
  */
+@Cacheable("shopping_carts")
 public interface ShoppingCartService {
     /**
      * Save a shoppingCart.

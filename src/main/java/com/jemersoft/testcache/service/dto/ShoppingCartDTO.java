@@ -13,6 +13,8 @@ import javax.validation.constraints.*;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class ShoppingCartDTO implements Serializable {
 
+    public ShoppingCartDTO() {}
+
     private Long id;
 
     @NotNull

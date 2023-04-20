@@ -15,6 +15,8 @@ import javax.validation.constraints.*;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class Product implements Serializable {
 
+    public Product() {}
+
     private static final long serialVersionUID = 1L;
 
     @Id
