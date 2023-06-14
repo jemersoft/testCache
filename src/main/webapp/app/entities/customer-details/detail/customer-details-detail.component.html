@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customerDetails">
+      <h2 data-cy="customerDetailsDetailsHeading"><span>Customer Details</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ customerDetails.id }}</span>
+        </dd>
+        <dt><span>Gender</span></dt>
+        <dd>
+          <span>{{ customerDetails.gender }}</span>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+          <span>{{ customerDetails.phone }}</span>
+        </dd>
+        <dt><span>Address Line 1</span></dt>
+        <dd>
+          <span>{{ customerDetails.addressLine1 }}</span>
+        </dd>
+        <dt><span>Address Line 2</span></dt>
+        <dd>
+          <span>{{ customerDetails.addressLine2 }}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+          <span>{{ customerDetails.city }}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+          <span>{{ customerDetails.country }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customer-details', customerDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
