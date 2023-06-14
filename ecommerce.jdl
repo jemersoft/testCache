@@ -4,7 +4,7 @@ entity Product {
     description String
     price BigDecimal required min(0)
     productSize Size required
-    image ImageBlob
+    image String
 }
 
 enum Size {
@@ -30,7 +30,6 @@ enum Gender {
 }
 
 entity ShoppingCart {
-    placedDate Instant required
     status OrderStatus required
     totalPrice BigDecimal required min(0)
     paymentMethod PaymentMethod required
@@ -50,10 +49,6 @@ entity ProductOrder {
     totalPrice BigDecimal required min(0)
 }
 
-relationship OneToOne {
-    CustomerDetails{user(login) required} to User
-}
-
 relationship ManyToOne {
     ProductOrder{product(name) required} to Product
 }
@@ -64,5 +59,7 @@ relationship OneToMany {
     ProductCategory{product} to Product{productCategory(name) required}
 }
 
-service * with serviceClass
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination
 paginate Product, CustomerDetails, ProductCategory with pagination
