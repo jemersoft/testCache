@@ -29,6 +29,7 @@
     "ci:server:await": "echo \"Waiting for server at port $npm_package_config_backend_port to start\" && wait-on -t 180000 http-get://localhost:$npm_package_config_backend_port/management/health && echo \"Server at port $npm_package_config_backend_port started\"",
     "clean-www": "rimraf target/classes/static/app/{src,target/}",
     "cleanup": "rimraf target/classes/static/",
+    "clean-all": "rm -rf node_modules && rm -f package-lock.json && npm cache clean --force",
     "cypress": "cypress open --e2e",
     "cypress:audits": "cypress open --e2e --config-file cypress-audits.config.js",
     "docker:app:up": "docker-compose -f src/main/docker/app.yml up -d",

@@ -1,11 +1,17 @@
 package com.jemersoft.testcache.config;
 
+import com.jemersoft.testcache.repository.ProductRepository;
+import com.jemersoft.testcache.service.ProductService;
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.expiry.CreatedExpiryPolicy;
 import javax.cache.expiry.Duration;
 import org.redisson.Redisson;
+import org.redisson.client.codec.Codec;
+import org.redisson.client.codec.StringCodec;
+import org.redisson.codec.JsonJacksonCodec;
+import org.redisson.codec.SerializationCodec;
 import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.Config;
 import org.redisson.config.SingleServerConfig;
@@ -36,6 +42,9 @@ public class CacheConfiguration {
         URI redisUri = URI.create(jHipsterProperties.getCache().getRedis().getServer()[0]);
 
         Config config = new Config();
+        final Codec codec = new SerializationCodec();
+        config.setCodec(codec);
+
         if (jHipsterProperties.getCache().getRedis().isCluster()) {
             ClusterServersConfig clusterServersConfig = config
                 .useClusterServers()
@@ -71,6 +80,11 @@ public class CacheConfiguration {
         return cm -> {
             createCache(cm, com.jemersoft.testcache.repository.UserRepository.USERS_BY_LOGIN_CACHE, jcacheConfiguration);
             createCache(cm, com.jemersoft.testcache.repository.UserRepository.USERS_BY_EMAIL_CACHE, jcacheConfiguration);
+            createCache(cm, "product", jcacheConfiguration);
+            createCache(cm, "customer_details", jcacheConfiguration);
+            createCache(cm, "product_categories", jcacheConfiguration);
+            createCache(cm, "product_orders", jcacheConfiguration);
+            createCache(cm, "shopping_carts", jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }
